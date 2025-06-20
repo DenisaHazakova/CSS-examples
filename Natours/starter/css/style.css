@@ -31,6 +31,7 @@ body {
 }
 
 .header {
+    position: relative;
     /* height always be 95% of viewport height = resolution of currently opened window */
     height: 95vh;
     /* to achieve colorful background with image, we use two paramaters here: */
@@ -44,4 +45,17 @@ body {
     /* achieve the crop of the image */
     /* within polygon we need to specify 4 points. Each point = corner of the image has its own two paramaters (x and y) */
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+    /* parent element - header needs to be set to positon relative so we can set here position absolute */
+    /* so counting top and left parameters start from parent element header */
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    /* with specifying height , the width will be justify with the browser so we cannot specify it */
+height: 35px;
 }
