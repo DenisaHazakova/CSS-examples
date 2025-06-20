@@ -66,7 +66,7 @@ body {
     /* with left 50% the heading will start with 50% from left of parent element */
     /* this will cause that it will be not centered, but counting from the start of the heading */
     /* we need to use transorm method */
-    top: 50%;
+    top: 40%;
     left: 50%;
     /* -50% means it will translate the width to the left and to the top of 50% of the current element = text-box */
     /* with this the both headings will be perfectly placed in the center */
