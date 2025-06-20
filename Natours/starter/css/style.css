@@ -37,7 +37,7 @@ body {
     /* to achieve colorful background with image, we use two paramaters here: */
     /* first parameter in linear-gradient we specify direction of gradient (to left, to bottom, to right, ...) */
     /* to show the background page we use opacity in colors. Fourth parameter in rgba is opacity value */
-   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/hero.jpg);
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/hero.jpg);
     /* cover: always fit the size of the box so it will not overflow the viewport */
     background-size: cover;
     /* with the change of viewport size always show the top of the background */
@@ -57,5 +57,41 @@ body {
 
 .logo {
     /* with specifying height , the width will be justify with the browser so we cannot specify it */
-height: 35px;
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    /* with top 50% the heading will start with 50% from top of parent element */
+    /* with left 50% the heading will start with 50% from left of parent element */
+    /* this will cause that it will be not centered, but counting from the start of the heading */
+    /* we need to use transorm method */
+    top: 50%;
+    left: 50%;
+    /* -50% means it will translate the width to the left and to the top of 50% of the current element = text-box */
+    /* with this the both headings will be perfectly placed in the center */
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff; 
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    /* to ensure that main and sub heading will display separately - as block, which means, one heading - one line */
+    display: block;
+    /* size of the font */
+    font-size: 60px;
+    /* boldness / thickness of font */
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    /* within Lato font-family we are only allowed to use certain font-weight (specified in html) */
+    font-weight: 700;
+    letter-spacing: 17.4px;
 }
