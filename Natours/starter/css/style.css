@@ -71,6 +71,8 @@ body {
     /* -50% means it will translate the width to the left and to the top of 50% of the current element = text-box */
     /* with this the both headings will be perfectly placed in the center */
     transform: translate(-50%, -50%);
+    /* to ensure all child element are centered */
+    text-align: center;
 }
 
 .heading-primary {
@@ -114,6 +116,8 @@ body {
     animation-duration: 1s;
     /* animation progress */
     animation-timing-function:ease-out;
+    /* to create a blank space at the bottom of the heading so button will be separated */
+    margin-bottom: 60px;
 }
 
 @keyframes moveInLeft {
@@ -152,4 +156,32 @@ body {
         /* after animation is done we want to have heading exactly where it is so translate is zero */
         transform: translate(0);
     }
+}
+/* targets anchor tags (<a>) that have not been visited by the user yet */
+.btn:link,
+/* targets anchor tags that the user has already visited. */
+.btn:visited {
+    text-transform: uppercase;
+    /* we use the link pseudo-class so the link is underlined and blue so with text-decoration: none we ensure that it will be removed */
+    text-decoration: none;
+    padding: 15px 40px;
+    /* by default with padding the element overflows the heading above. To remove this behaviour we use:  */
+    display: inline-block;
+      border-radius: 100px;
+}
+
+
+.btn:hover {
+    /* y axis moves from top to bottom, so zero value is on the top of the screen. so with positive value we move from top to the bottom. But we want to move up so we need to use negative value: */
+    transform: translateY(-3px);
+}
+
+/* button after click:  */
+.btn:active {
+    transform: translateY(-5px);
+}
+
+.btn-white {
+    color: #777;
+    background-color: #fff;
 }
