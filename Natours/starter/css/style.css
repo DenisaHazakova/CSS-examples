@@ -76,7 +76,7 @@ body {
 }
 
 .heading-primary {
-    color: #fff; 
+    color: #fff;
     text-transform: uppercase;
 }
 
@@ -93,7 +93,7 @@ body {
     /* time of the animtion */
     animation-duration: 1s;
     /* animation progress */
-    animation-timing-function:ease-out;
+    animation-timing-function: ease-out;
     /* This prevent element heading to not be shaky: */
     backface-visibility: hidden;
 
@@ -115,7 +115,7 @@ body {
     /* time of the animtion */
     animation-duration: 1s;
     /* animation progress */
-    animation-timing-function:ease-out;
+    animation-timing-function: ease-out;
     /* to create a blank space at the bottom of the heading so button will be separated */
     margin-bottom: 60px;
 }
@@ -127,10 +127,12 @@ body {
         /* we want to move heading from left to right = along x axis */
         transform: translateX(-100px);
     }
+
     /* during the animation we want to move heading a little bit to right */
     80% {
         transform: translateX(10px);
     }
+
     100% {
         /* after animation opacity needs to be 100% = full visible */
         opacity: 1;
@@ -146,10 +148,12 @@ body {
         /* we want to move heading from left to right = along x axis */
         transform: translateX(100px);
     }
+
     /* during the animation we want to move heading a little bit to right */
     80% {
         transform: translateX(-10px);
     }
+
     100% {
         /* after animation opacity needs to be 100% = full visible */
         opacity: 1;
@@ -157,6 +161,7 @@ body {
         transform: translate(0);
     }
 }
+
 /* targets anchor tags (<a>) that have not been visited by the user yet */
 .btn:link,
 /* targets anchor tags that the user has already visited. */
@@ -167,7 +172,14 @@ body {
     padding: 15px 40px;
     /* by default with padding the element overflows the heading above. To remove this behaviour we use:  */
     display: inline-block;
-      border-radius: 100px;
+    border-radius: 100px;
+    /* What transition does?
+    - makes visual changes smoother
+    - it affects any future changes to properties like color, transform, opacity, etc.
+    - animate smoothly over 0.2s, rather than happening instantly */
+    transition: all .2s;
+    position: relative;
+    
 }
 
 
@@ -175,17 +187,48 @@ body {
     /* y axis moves from top to bottom, so zero value is on the top of the screen. so with positive value we move from top to the bottom. But we want to move up so we need to use negative value: */
     transform: translateY(-3px);
     /* first parameter is shadow in x direction (in our case zero), the second parameter is y direction, third parameter is size of shadow. Last param is a color and opacity */
-    box-shadow: 0 10px 20px rgba(0,0,0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* button after click:  */
 .btn:active {
     transform: translateY(-5px);
     /* when we click we want to have smaller shadow and to go down */
-    box-shadow: 0 5px 10px rgba(0,0,0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn-white {
     color: #777;
     background-color: #fff;
+}
+
+/* The last child of the selected element */
+.btn::after {
+    /* always need to specify contect and display because animation will not work */
+    content: "";
+    display: inline-block;
+    /* height and width behave like a reference to its parent size which is .btn */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /* when we specify absolute position it will find parent element with position realtive which is btn:visited */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* we need to get this btn hidden behind the .btn so we specify z index */
+    z-index: -1;
+    transition: all .4s;
+}
+
+/* after element we need to specify also with .btn-white class */
+.btn-white::after {
+    background-color: #fff;
+}
+
+/* when we hover over the .btn, we want to something happen after: */
+.btn:hover::after {
+    /* scale: it transform its size to be bigger. Because in paranthesis is 1.4, it will be bigger 1.4 times in x direction anad 1.6 times on y direction */
+    transform: scaleX(1.4), scaleY(1.6);
+    /* invisible */
+    opacity: 0;
 }
