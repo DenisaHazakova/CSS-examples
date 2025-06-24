@@ -174,11 +174,15 @@ body {
 .btn:hover {
     /* y axis moves from top to bottom, so zero value is on the top of the screen. so with positive value we move from top to the bottom. But we want to move up so we need to use negative value: */
     transform: translateY(-3px);
+    /* first parameter is shadow in x direction (in our case zero), the second parameter is y direction, third parameter is size of shadow. Last param is a color and opacity */
+    box-shadow: 0 10px 20px rgba(0,0,0, 0.2);
 }
 
 /* button after click:  */
 .btn:active {
     transform: translateY(-5px);
+    /* when we click we want to have smaller shadow and to go down */
+    box-shadow: 0 5px 10px rgba(0,0,0, 0.2);
 }
 
 .btn-white {
