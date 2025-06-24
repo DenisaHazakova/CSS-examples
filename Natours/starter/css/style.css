@@ -162,6 +162,23 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        /* before animation needs to be opacity zero = invisible */
+        opacity: 0;
+        /* we want to move button from bottom to its position = along y axis */
+        transform: translateY(30px);
+    }
+
+
+    100% {
+        /* after animation opacity needs to be 100% = full visible */
+        opacity: 1;
+        /* after animation is done we want to have button exactly where it is so translate is zero */
+        transform: translate(0);
+    }
+}
+
 /* targets anchor tags (<a>) that have not been visited by the user yet */
 .btn:link,
 /* targets anchor tags that the user has already visited. */
@@ -179,7 +196,6 @@ body {
     - animate smoothly over 0.2s, rather than happening instantly */
     transition: all .2s;
     position: relative;
-    
 }
 
 
@@ -231,4 +247,11 @@ body {
     transform: scaleX(1.4), scaleY(1.6);
     /* invisible */
     opacity: 0;
+}
+
+.btn-animated {
+    /* 1. animation name, 2.duration, 3. movement, 4. delay */
+    animation: moveInBottom 1s ease-out .75s;
+    /* within this property during delay the button will be not visible but only appear after delay time and makes its animation */
+    animation-fill-mode: backwards;
 }
