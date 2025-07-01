@@ -9,12 +9,13 @@ Dark green: #28b485
 
 /* following code is to 'normalize' the CSS so it can works for all the browsers */
 /* the asterisk apply for each element */
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    /* border-box: width including width of border, margin, and so on
-    Example: width is 52px. 52 px includes width of border, margin ad padding of box and content of box (=div)  */
-    box-sizing: border-box;
+    /* Every element should inherit its box-sizing from its parent */
+    box-sizing: inherit;
 }
 
 /* setting font-size in html=root, so all child can inherit this font size and can convert percentage to rem units down below the code */
@@ -40,6 +41,9 @@ body {
     color: #777;
     /* space around the elements */
     padding: 3rem;
+    /* border-box: width including width of border, margin, and so on
+    Example: width is 52px. 52 px includes width of border, margin ad padding of box and content of box (=div)  */
+    box-sizing: border-box;
 }
 
 .header {
