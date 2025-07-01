@@ -17,17 +17,29 @@ Dark green: #28b485
     box-sizing: border-box;
 }
 
+/* setting font-size in html=root, so all child can inherit this font size and can convert percentage to rem units down below the code */
+html {
+    /* do not use pixels units = browser do not support changing the font size by user, it will not work for user when they need to zoom it or change the accesibility settings */
+    /* font-size: 10px; */
+    /* use percentage: 16px (defaultly) = 100% */
+    /* if user change settings in browser, it will recalculate accordingly: 20px = 100% */
+    font-size: 62.5%;
+    /* calculation behind: 62.5% of 16px is 10px
+    10px is 1 rem for all children */
+}
+
 /* all child elements of body element will inherit the styling mentioned down below */
 body {
     /* Lato is available because we have Google fonts prepared in html section */
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* calculation: 10px is 1 rem (from html=root declaration) so 1.6rem is 16px  */
+    font-size: 1.6rem;
     /* space = height between the text lines */
     line-height: 1.7;
     color: #777;
     /* space around the elements */
-    padding: 30px;
+    padding: 3rem;
 }
 
 .header {
@@ -51,13 +63,13 @@ body {
     /* parent element - header needs to be set to positon relative so we can set here position absolute */
     /* so counting top and left parameters start from parent element header */
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
     /* with specifying height , the width will be justify with the browser so we cannot specify it */
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -84,10 +96,10 @@ body {
     /* to ensure that main and sub heading will display separately - as block, which means, one heading - one line */
     display: block;
     /* size of the font */
-    font-size: 60px;
+    font-size: 6rem;
     /* boldness / thickness of font */
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     /* after defining keyframes moveInLeft, we want to use it within this heading:width: */
     animation-name: moveInLeft;
     /* time of the animtion */
@@ -106,10 +118,10 @@ body {
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     /* within Lato font-family we are only allowed to use certain font-weight (specified in html) */
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     animation-name: moveInRight;
     /* time of the animtion */
@@ -117,7 +129,7 @@ body {
     /* animation progress */
     animation-timing-function: ease-out;
     /* to create a blank space at the bottom of the heading so button will be separated */
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 @keyframes moveInLeft {
@@ -186,16 +198,17 @@ body {
     text-transform: uppercase;
     /* we use the link pseudo-class so the link is underlined and blue so with text-decoration: none we ensure that it will be removed */
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     /* by default with padding the element overflows the heading above. To remove this behaviour we use:  */
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* What transition does?
     - makes visual changes smoother
     - it affects any future changes to properties like color, transform, opacity, etc.
     - animate smoothly over 0.2s, rather than happening instantly */
     transition: all .2s;
     position: relative;
+    font-size: 1.6rem;
 }
 
 
@@ -210,7 +223,7 @@ body {
 .btn:active {
     transform: translateY(-5px);
     /* when we click we want to have smaller shadow and to go down */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .btn-white {
@@ -226,7 +239,7 @@ body {
     /* height and width behave like a reference to its parent size which is .btn */
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* when we specify absolute position it will find parent element with position realtive which is btn:visited */
     position: absolute;
     top: 0;
