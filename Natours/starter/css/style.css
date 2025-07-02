@@ -63,7 +63,7 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     /* parent element - header needs to be set to positon relative so we can set here position absolute */
     /* so counting top and left parameters start from parent element header */
     position: absolute;
@@ -71,12 +71,12 @@ body {
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     /* with specifying height , the width will be justify with the browser so we cannot specify it */
     height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     /* with top 50% the heading will start with 50% from top of parent element */
     /* with left 50% the heading will start with 50% from left of parent element */
@@ -96,7 +96,7 @@ body {
     text-transform: uppercase;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     /* to ensure that main and sub heading will display separately - as block, which means, one heading - one line */
     display: block;
     /* size of the font */
@@ -120,7 +120,7 @@ body {
     /* animation-iteration-count: 3; */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
     font-size: 2rem;
     /* within Lato font-family we are only allowed to use certain font-weight (specified in html) */
@@ -230,7 +230,7 @@ body {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.btn--white {
     color: #777;
     background-color: #fff;
 }
@@ -254,7 +254,7 @@ body {
 }
 
 /* after element we need to specify also with .btn-white class */
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -266,7 +266,7 @@ body {
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     /* 1. animation name, 2.duration, 3. movement, 4. delay */
     animation: moveInBottom 1s ease-out .75s;
     /* within this property during delay the button will be not visible but only appear after delay time and makes its animation */
