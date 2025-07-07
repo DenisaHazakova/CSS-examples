@@ -272,3 +272,15 @@ body {
     /* within this property during delay the button will be not visible but only appear after delay time and makes its animation */
     animation-fill-mode: backwards;
 }
+
+.row {
+    max-width: 114rem;
+    /* width top and botom to 0 we set to not have margin and for left and right with auto we ensure that browser will automatically centralize the blocks */
+    margin: 0 auto;
+    background-color: #eee;
+}
+
+/* not pseudo class - apply following properties EXCEPT FOR last child */
+.row:not(:last-child) {
+    margin-bottom: 80px;
+}
