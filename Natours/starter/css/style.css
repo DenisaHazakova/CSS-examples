@@ -273,6 +273,11 @@ body {
     animation-fill-mode: backwards;
 }
 
+
+/* GRID VALUES
+    grid-width: 114 rem;
+    grid-vertical: 8 rem;
+    grid-horizontal: 6 rem; */
 .row {
     max-width: 114rem;
     /* width top and botom to 0 we set to not have margin and for left and right with auto we ensure that browser will automatically centralize the blocks */
@@ -284,3 +289,24 @@ body {
 .row:not(:last-child) {
     margin-bottom: 80px;
 }
+
+.row::after {
+    /* following code helps to ignore float property used on columns and remove zero height: */
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* setting width of column with calc function */
+.col-1-of-2 {
+    width: calc((100% - 6rem)/2);
+    background-color: orangered;
+   /* with float one problem appears: zero height of div */
+    float: left;
+}
+
+/* we want to ensure that each column would have margin-right except for the last column on the right, because of that we can use last chikd pseudo class along with :not */
+.col-1-of-2:not(:last-child) {
+    margin-right: 6rem;
+}
+
