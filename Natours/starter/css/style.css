@@ -274,68 +274,71 @@ body {
 }
 
 
+
+/* REUSABLE LINES OF CODE FOR GRID LAYOUTS WITH FLOAT */
 /* GRID VALUES
     grid-width: 114 rem;
     grid-vertical: 8 rem;
     grid-horizontal: 6 rem; */
-.row {
+
+ /* .row {
     max-width: 114rem;
-    /* width top and botom to 0 we set to not have margin and for left and right with auto we ensure that browser will automatically centralize the blocks */
+    width top and botom to 0 we set to not have margin and for left and right with auto we ensure that browser will automatically centralize the blocks
     margin: 0 auto;
     background-color: #eee;
-}
+} */
 
 /* not pseudo class - apply following properties EXCEPT FOR last child */
-.row:not(:last-child) {
+/* .row:not(:last-child) {
     margin-bottom: 80px;
-}
+} */
 
-.row::after {
-    /* following code helps to ignore float property used on columns and remove zero height: */
+/* .row::after {
+    following code helps to ignore float property used on columns and remove zero height:
     content: '';
     display: table;
     clear: both;
-}
+} */
 
 /* find all classes starting with "col-" */
-[class^="col-"] {
+/* [class^="col-"] {
     background-color: orangered;
-    /* with float one problem appears: zero height of div */
+    with float one problem appears: zero height of div
     float: left;
-}
+} */
 
 /* we want to ensure that each column would have margin-right except for the last column on the right, because of that we can use last chikd pseudo class along with :not */
-[class^="col-1"]:not(:last-child) {
+/* [class^="col-1"]:not(:last-child) {
     margin-right: 6rem;
-}
+} */
 
 /* setting width of column with calc function */
 /* we have two columns in page. we want to calculate their width. We need to substract from 100% width the margin width which is 6 rem. Then divide by two because we have two columns. */
-.col-1-of-2 {
+/* .col-1-of-2 {
     width: calc((100% - 6rem)/2);
-}
+} */
 
 /* we want to have three columns in page, so we divide by three. we have two spaces (margins) between three columns, because of that we substract with 2. */
-.col-1-of-3 {
+/* .col-1-of-3 {
     width: calc((100% - 2 * 6rem)/3);
-}
+} */
 
 /* want to calculate 2/3 width of column. we can imagine that it is like to have 2 columns col-1-of-3 and one additional margin with 6rem width. */
-.col-2-of-3 {
+/* .col-2-of-3 {
     width: calc(2*((100% - 2 * 6rem)/3) + 6rem);
-}
+} */
 
 /* want to have four columns, so we divide by four. and we have 3 spaces=margins in between, so we substract with three. */
-.col-1-of-4 {
+/* .col-1-of-4 {
     width: calc((100% - 3 * 6rem)/4);
-}
+} */
 
 /* want to calculate 2/4 of column. we can imagine it is like two columns od col-1-of-4. so we multiply by 2. Plus one additional margin of 6rem */
-.col-2-of-4 {
+/* .col-2-of-4 {
     width: calc(2 * ((100% - 3 * 6rem)/4) + 6rem);
-}
+} */
 
 /* want to calculate width of 3/4 of column. so we can imagine that is like to calculate three times the col-1-of-4 plus two additional margins of 6rem */
-.col-3-of-4 {
+/* .col-3-of-4 {
     width: calc((3 * (100% - 3 * 6rem)/4) + 2 * 6rem);
-}
+}  */
