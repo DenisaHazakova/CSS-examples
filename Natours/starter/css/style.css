@@ -361,4 +361,25 @@ body {
     -webkit-background-clip: text;
     /* when we set color of heading as transparent, we can see then the linear gradient color which was hidden behind the text of heading */
     color: transparent;
+    /* to make hover effect smooth we always need to use transition property */
+    transition: all .2s;
+    letter-spacing: .2rem;
+}
+
+/* animation applied on heading-seondary after hover: */
+.heading-secondary:hover {
+    /* skewY: it will rotate along the y axis based on degrees define and skewing the letters.
+    skewX: it will skew the letters on x axis so no rotation
+    scale: to make text bigger to 1.1 of its actual size */
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    /* 
+    .5rem: x direction
+    1rem: y direction
+    2rem: blur
+    fourth parameter - color of shadows */
+    text-shadow: .5rem 1rem 2rem rgba(black, .2);
+}
+
+.u-center-text {
+    text-align: center;
 }
