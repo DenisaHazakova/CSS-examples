@@ -7,6 +7,11 @@ Dark green: #28b485
 
 */
 
+/* FONT SIZES:
+
+default-font-size: 1.6rem;
+ */
+
 /* following code is to 'normalize' the CSS so it can works for all the browsers */
 /* the asterisk apply for each element */
 *,
@@ -281,10 +286,10 @@ body {
     grid-vertical: 8 rem;
     grid-horizontal: 6 rem; */
 
- .row {
+.row {
     max-width: 114rem;
     /* width top and botom to 0 we set to not have margin and for left and right with auto we ensure that browser will automatically centralize the blocks*/
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 /* not pseudo class - apply following properties EXCEPT FOR last child */
@@ -308,7 +313,7 @@ body {
 /* we want to ensure that each column would have margin-right except for the last column on the right, because of that we can use last child pseudo class along with :not */
 [class^="col-1"]:not(:last-child) {
     margin-right: 6rem;
-   
+
 }
 
 /* setting width of column with calc function */
@@ -344,7 +349,9 @@ body {
 
 
 .section-about {
-    background-color: #f7f7f7 /*light grey*/;
+    background-color: #f7f7f7
+        /*light grey*/
+    ;
     padding: 25rem 0;
     /* because we used on header polygon, we need to move the margin to the top so background color will be smoothly attached with polygon. To do that we use negative value of margin-top so the background-color will be apply to the top (to the border of the polygon) */
     margin-top: -20vh;
@@ -355,7 +362,8 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     background-image: linear-gradient(to right, rgba(126, 213, 111), rgba(40, 180, 133));
-    display: inline-block; /* to occupy only width of heading text*/
+    display: inline-block;
+    /* to occupy only width of heading text*/
     /* until now we have linear gradient applied as background of heading. with -webkit-background-clip as text we clip the linear gradient only as size of heading. But it will be hidden behind the heading so we will not see it. */
     -webkit-background-clip: text;
     /* when we set color of heading as transparent, we can see then the linear gradient color which was hidden behind the text of heading */
@@ -383,7 +391,7 @@ body {
     text-align: center;
 }
 
-.u-margin-bottom-8 {
+.u-margin-bottom-big {
     margin-bottom: 8rem;
 }
 
@@ -400,4 +408,32 @@ body {
 /* we want to apply margin-bottom on paragraphs except for the last one */
 .paragraph:not(:last-child) {
     margin-bottom: 3rem;
+}
+
+.u-margin-bottom-small {
+    margin-bottom: 1.5rem;
+}
+
+.btn-text:visited,
+:link {
+    text-decoration: none;
+    color: #7ed56f;
+    display: inline-block;
+    border-bottom: 1px solid #7ed56f;
+    padding: 3px;
+    font-size: 1.6rem;
+    transition: all .2s;
+}
+
+
+.btn-text:hover {
+    color: white;
+    background-color: #7ed56f;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-text:active {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
 }
