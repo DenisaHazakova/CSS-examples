@@ -437,3 +437,52 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     transform: translateY(0);
 }
+
+
+.composition {
+    position: relative;
+}
+
+.composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .4);
+    border-radius: 2px;
+    /* it will check the first parent reference which has defined position property, in our case - parent element div with class composition */
+    position: absolute;
+    z-index: 10;
+    transition: transform 0.2s, box-shadow 0.2s, outline-offset 0.2s;
+    /* space between the image and border */
+    outline-offset: 2rem;
+    transform: scale(0.7);
+}
+
+.composition__photo--p1 {
+    /* the left and top properties would be calculated to the point 0,0 of reference element - class composition:*/
+    top: -2rem;
+    left: 0;
+}
+
+.composition__photo--p2 {
+    top: 2rem;
+    right: 0px;
+}
+
+.composition__photo--p3 {
+    top: 10rem;
+    left: 20%;
+}
+
+.composition__photo:hover {
+    /* the same as border property but with outline we can use outline-offset in parent element */
+    outline: 1.5rem solid rgba(126,213,111);
+    /* to make image element bigger in size */
+    transform: scale(1.05) translateY(-.5rem);
+    box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+    /* because we defined z-index of parent to 10 and here to 20, we ensured that because of bigger number (20), the image currently on hover will be always at the top */
+    z-index: 20;
+    border-radius: 0;
+}
+
+.composition:hover .composition__photo:not(:hover) {
+    transform: scale(.95);
+}
