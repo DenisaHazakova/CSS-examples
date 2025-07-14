@@ -12,6 +12,17 @@ Dark green: #28b485
 default-font-size: 1.6rem;
  */
 
+ /* setting font-size in html=root, so all child can inherit this font size and can convert percentage to rem units down below the code */
+html {
+    /* do not use pixels units = browser do not support changing the font size by user, it will not work for user when they need to zoom it or change the accesibility settings */
+    /* font-size: 10px; */
+    /* use percentage: 16px (defaultly) = 100% */
+    /* if user change settings in browser, it will recalculate accordingly: 20px = 100% */
+    font-size: 62.5%;
+    /* calculation behind: 62.5% of 16px is 10px
+    10px is 1 rem for all children */
+}
+
 /* following code is to 'normalize' the CSS so it can works for all the browsers */
 /* the asterisk apply for each element */
 *,
@@ -21,17 +32,6 @@ default-font-size: 1.6rem;
     padding: 0;
     /* Every element should inherit its box-sizing from its parent */
     box-sizing: inherit;
-}
-
-/* setting font-size in html=root, so all child can inherit this font size and can convert percentage to rem units down below the code */
-html {
-    /* do not use pixels units = browser do not support changing the font size by user, it will not work for user when they need to zoom it or change the accesibility settings */
-    /* font-size: 10px; */
-    /* use percentage: 16px (defaultly) = 100% */
-    /* if user change settings in browser, it will recalculate accordingly: 20px = 100% */
-    font-size: 62.5%;
-    /* calculation behind: 62.5% of 16px is 10px
-    10px is 1 rem for all children */
 }
 
 /* all child elements of body element will inherit the styling mentioned down below */
@@ -333,9 +333,9 @@ body {
 } */
 
 /* want to have four columns, so we divide by four. and we have 3 spaces=margins in between, so we substract with three. */
-/* .col-1-of-4 {
+.col-1-of-4 {
     width: calc((100% - 3 * 6rem)/4);
-} */
+}
 
 /* want to calculate 2/4 of column. we can imagine it is like two columns od col-1-of-4. so we multiply by 2. Plus one additional margin of 6rem */
 /* .col-2-of-4 {
@@ -487,30 +487,47 @@ body {
 }
 
 .section-features {
-    height: 95vh;
     padding: 20rem 0;
      /* to achieve colorful background with image, we use two paramaters here: */
     /* first parameter in linear-gradient we specify direction of gradient (to left, to bottom, to right, ...) */
     /* to show the background page we use opacity in colors. Fourth parameter in rgba is opacity value */
-    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/hero.jpg);
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/nat-4.jpg);
     /* cover: always fit the size of the box so it will not overflow the viewport */
     background-size: cover;
-    /* with the change of viewport size always show the top of the background */
-    background-position: top;
-    /* achieve the crop of the image */
-    /* within polygon we need to specify 4 points. Each point = corner of the image has its own two paramaters (x and y) */
-    clip-path: polygon(0 0, 100% 0, 0 100%, 100% 75vh);
-    /* pohrat sa s polygon */
+   /* with a skewY on this clas we achieve angled background but also we at the same time skewing the cards = feature-box class. So we need to "un-skew" the first children - row class*/
+    transform: skewY(-7deg);
+    margin-top: -10rem;
+}
+
+/* As written below we just select the direct child of class .section-features which is class .row */
+.section-features > * {
+    transform: skewY(7deg);
 }
 
 .feature-box {
+    background-color: rgba(247, 247, 247, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    text-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    transition: all .3s;
+}
 
+.feature-box:hover {
+    transform: scale(1.03) translateY(-1.5rem);
 }
 
 .feature-box__icon {
-
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    background-image: linear-gradient(to right, rgba(126, 213, 111), rgba(40, 180, 133));
+    display: inline-block;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .feature-box__text {
 
 }
+
