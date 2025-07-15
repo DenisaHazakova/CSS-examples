@@ -555,6 +555,8 @@ body {
     /* until it is fully hovered do not show the back card */
     backface-visibility: hidden;
     border-radius: 3px;
+    /* border-radius would be no visible because of background-image defined in child. To active this property again, we use overflow: */
+    overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .15);
 }
 
@@ -567,17 +569,35 @@ body {
 }
 
 .card__side--back-1 {
-    background-image: linear-gradient(to right bottom, rgba(255, 185, 0), rgba(255, 119, 64) );
+    background-image: linear-gradient(to right bottom, rgba(255, 185, 0), rgba(255, 119, 64));
 }
 
 /* when we hover over the card, we want to transform it */
 .card:hover .card__side--front {
     /* rotate the card on y axis */
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
 }
 
 .card:hover .card__side--back {
     transform: rotateY(0);
 }
 
+/* front side card styling */
+.card__picture {
+    background-size: cover;
+    height: 23rem;
+    /* new property: ensures that both, linear gradient and bckground-image picture can be visible both of them */
+    background-blend-mode:screen;
+}
 
+.card__picture-1 {
+    background-image: linear-gradient(to right bottom, rgba(255, 185, 0), rgba(255, 119, 64)), url(../img/nat-5.jpg);
+}
+
+.card__picture-2 {
+    background-image: url(../img/nat-6.jpg);
+}
+
+.card__picture-3 {
+    background-image: url(../img/nat-7.jpg);
+}
