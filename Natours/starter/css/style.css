@@ -542,11 +542,11 @@ body {
     /* perspective property needs to be defined in parent element of child which using animation. It creates the effect to rotate "towards" the user*/
     perspective: 150rem;
     position: relative;
-    height: 50rem;
+    height: 53rem;
 }
 
 .card__side {
-    height: 50rem;
+    height: 53rem;
     transition: all 0.8s ease;
     position: absolute;
     top: 0;
@@ -587,7 +587,8 @@ body {
     background-size: cover;
     height: 23rem;
     /* new property: ensures that both, linear gradient and bckground-image picture can be visible both of them */
-    background-blend-mode:screen;
+    background-blend-mode: screen;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
 .card__picture-1 {
@@ -595,9 +596,57 @@ body {
 }
 
 .card__picture-2 {
-    background-image: url(../img/nat-6.jpg);
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111), rgba(40, 180, 133)), url(../img/nat-6.jpg);
 }
 
 .card__picture-3 {
-    background-image: url(../img/nat-7.jpg);
+    background-image: linear-gradient(to right bottom, rgba(41, 152, 255), rgba(102, 67, 250)), url(../img/nat-7.jpg);
+}
+
+.card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #f7f7f7;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    text-align: right;
+    width: 75%;
+}
+.card__heading-span{
+padding: 1rem 1.5rem;
+/* to behave not as heading but like an element = boxes to have padding around whole text, also the first and last letters */
+box-decoration-break: clone;
+}
+.card__heading-span--1 {
+    background-image: linear-gradient(to right bottom, rgba(255, 185, 0, .85), rgba(255, 119, 64, .85))
+}
+
+.card__heading-span--2 {
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, .85), rgba(40, 180, 133, .85))
+}
+
+.card__heading-span--3 {
+    background-image: linear-gradient(to right bottom, rgba(41, 152, 255, .85), rgba(102, 67, 250, .85))
+}
+
+.card__details {
+    padding: 3rem;
+}
+
+.card__details ul {
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card__details li {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.card__details li:not(:last-child) {
+    border-bottom: 1px solid #eee; /* gray; */
 }
