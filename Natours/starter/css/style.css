@@ -5,14 +5,18 @@ Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 
-*/
+color-secondary-light: #ffb900 (orange);
+color-secondary-dark: #ff7740 (darker orange);
+
+color-tertiary-light: #2998ff (blue)
+color-tertiary-dark: #6643fa (dark blue)*/
 
 /* FONT SIZES:
 
 default-font-size: 1.6rem;
  */
 
- /* setting font-size in html=root, so all child can inherit this font size and can convert percentage to rem units down below the code */
+/* setting font-size in html=root, so all child can inherit this font size and can convert percentage to rem units down below the code */
 html {
     /* do not use pixels units = browser do not support changing the font size by user, it will not work for user when they need to zoom it or change the accesibility settings */
     /* font-size: 10px; */
@@ -323,9 +327,9 @@ body {
 }
 
 /* we want to have three columns in page, so we divide by three. we have two spaces (margins) between three columns, because of that we substract with 2. */
-/* .col-1-of-3 {
+.col-1-of-3 {
     width: calc((100% - 2 * 6rem)/3);
-} */
+}
 
 /* want to calculate 2/3 width of column. we can imagine that it is like to have 2 columns col-1-of-3 and one additional margin with 6rem width. */
 /* .col-2-of-3 {
@@ -473,7 +477,7 @@ body {
 
 .composition__photo:hover {
     /* the same as border property but with outline we can use outline-offset in parent element */
-    outline: 1.5rem solid rgba(126,213,111);
+    outline: 1.5rem solid rgba(126, 213, 111);
     /* to make image element bigger in size */
     transform: scale(1.05) translateY(-.5rem);
     box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
@@ -488,19 +492,19 @@ body {
 
 .section-features {
     padding: 20rem 0;
-     /* to achieve colorful background with image, we use two paramaters here: */
+    /* to achieve colorful background with image, we use two paramaters here: */
     /* first parameter in linear-gradient we specify direction of gradient (to left, to bottom, to right, ...) */
     /* to show the background page we use opacity in colors. Fourth parameter in rgba is opacity value */
     background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/nat-4.jpg);
     /* cover: always fit the size of the box so it will not overflow the viewport */
     background-size: cover;
-   /* with a skewY on this clas we achieve angled background but also we at the same time skewing the cards = feature-box class. So we need to "un-skew" the first children - row class*/
+    /* with a skewY on this clas we achieve angled background but also we at the same time skewing the cards = feature-box class. So we need to "un-skew" the first children - row class*/
     transform: skewY(-7deg);
     margin-top: -10rem;
 }
 
 /* As written below we just select the direct child of class .section-features which is class .row */
-.section-features > * {
+.section-features>* {
     transform: skewY(7deg);
 }
 
@@ -527,7 +531,53 @@ body {
     color: transparent;
 }
 
-.feature-box__text {
-
+.section-tours {
+    padding: 25rem 0 50rem 0;
+    background-color: #f7f7f7;
+    /* margin-top: -13rem; */
+    margin-top: -20vh;
 }
+
+.card {
+    /* perspective property needs to be defined in parent element of child which using animation. It creates the effect to rotate "towards" the user*/
+    perspective: 150rem;
+    position: relative;
+    height: 50rem;
+}
+
+.card__side {
+    height: 50rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* until it is fully hovered do not show the back card */
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .15);
+}
+
+.card__side--front {
+    background-color: white;
+}
+
+.card__side--back {
+    transform: rotateY(180deg);
+}
+
+.card__side--back-1 {
+    background-image: linear-gradient(to right bottom, rgba(255, 185, 0), rgba(255, 119, 64) );
+}
+
+/* when we hover over the card, we want to transform it */
+.card:hover .card__side--front {
+    /* rotate the card on y axis */
+    transform: rotateY(180deg);
+}
+
+.card:hover .card__side--back {
+    transform: rotateY(0);
+}
+
 
