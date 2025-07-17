@@ -251,7 +251,7 @@ body {
 
 .btn--green {
     background-color: #7ed56f;
-    color:#f7f7f7;
+    color: #f7f7f7;
 }
 
 .btn-green::after {
@@ -411,6 +411,7 @@ body {
 .u-margin-top-huge {
     margin-top: 10rem;
 }
+
 .heading-tertiary {
     font-size: 1.6rem;
     font-weight: 700;
@@ -704,7 +705,7 @@ body {
 
 .section-stories {
     padding: 15rem 0;
-    background-color:#f7f7f7;
+    background-color: #f7f7f7;
 }
 
 .story {
@@ -714,14 +715,31 @@ body {
     background-color: white;
     border-radius: 3px;
     padding: 6rem;
+    padding-left: 9rem;
     font-size: 1.6rem;
-    
+    /* to create  non=rectangular shape we use skewX + to the right direction we use minus degrees. With this, also all children are not squared so we need to define opposite degres of skewX in children*/
+    transform: skewX(-12deg);
 }
 
 .story__shape {
     width: 15rem;
     height: 15rem;
-    background-color: olive;
     float: left;
-    border-radius: 50%;
+    /* for following property element needs to be floated
+     text will follow the circle shape*/
+    shape-outside: circle(50% at 50% 50%);
+    /* clip=path with circle 50% will create circle shape */
+    clip-path: circle(50% at 50% 50%);
+    /* moves the story__shape element = circle to the 3rem to the left */
+    /* with skewX: need to rectangular it back */
+    transform: translateX(-3rem) skewX(12deg);;
+}
+
+.story__img {
+    height: 100%;
+}
+
+.story__text {
+    /* need to rectangular it back */
+    transform: skewX(12deg);
 }
