@@ -439,6 +439,7 @@ body {
     border-bottom: 1px solid #7ed56f;
     padding: 3px;
     font-size: 1.6rem;
+    font-weight: 500;
     transition: all .2s;
 }
 
@@ -721,7 +722,15 @@ body {
     transform: skewX(-12deg);
 }
 
+/* after we hover over element .story, the text for element .story__caption would change from invisible bottom to white to the center of the circle shape */
+.story:hover .story__caption {
+    opacity: 1;
+    /* exact center positioned */
+    transform: translate(-50%, -50%);
+}
+
 .story__shape {
+    position: relative;
     width: 15rem;
     height: 15rem;
     float: left;
@@ -732,14 +741,42 @@ body {
     clip-path: circle(50% at 50% 50%);
     /* moves the story__shape element = circle to the 3rem to the left */
     /* with skewX: need to rectangular it back */
-    transform: translateX(-3rem) skewX(12deg);;
+    transform: translateX(-3rem) skewX(12deg);
 }
 
 .story__img {
     height: 100%;
+    /* initial state of image is zoom with 100.4% and positioned to the left of 3.5rem */
+    transform: translateX(-3.5rem) scale(1.4);
+    transition: all .5s;
 }
 
 .story__text {
     /* need to rectangular it back */
     transform: skewX(12deg);
+}
+
+.story__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* to centralize the text: -50% on X → moves the element left by half of its own width, 20% on Y → moves it up by half of its own height (20% so before hover it would be little bit lower positioned.)*/
+    transform: translate(-50%, 20%);
+    text-transform: uppercase;
+    color: #eee;
+    font-size: 1.7rem;
+    text-align: center;
+    /* to make it invisible before hover on the box element  */
+    opacity: 0;
+    transition: all .5s;
+    /* prevent to not shaking at the end of the hover effect */
+    backface-visibility: hidden;
+}
+
+/* when we hover over the .story element we want to change the image: */
+.story:hover .story__img {
+    /* after hovering we zoom out the picture to 100% and keeping the positioned to the left of 3.5rem (girl to be centered) */
+    transform: translateX(-3.5rem) scale(1.0);
+    /* with filter property we can set blur after hover and setting the brightness to less than 100% we make the image to be darker */
+    filter: blur(3px) brightness(80%);
 }
