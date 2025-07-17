@@ -705,15 +705,15 @@ body {
 }
 
 .section-stories {
+    position: relative;
     padding: 15rem 0;
-    background-color: #f7f7f7;
 }
 
 .story {
     width: 75%;
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255, 0.6);
     border-radius: 3px;
     padding: 6rem;
     padding-left: 9rem;
@@ -779,4 +779,23 @@ body {
     transform: translateX(-3.5rem) scale(1.0);
     /* with filter property we can set blur after hover and setting the brightness to less than 100% we make the image to be darker */
     filter: blur(3px) brightness(80%);
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .15;
+    overflow: hidden;
+}
+
+.bg-video__content {
+    /* to be that height and that wide as element bg-video = to not get overflowed. object-fit will set the accurate heigh and width as its parent has. */
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
 }
