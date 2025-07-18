@@ -407,6 +407,9 @@ body {
 .u-margin-bottom-big {
     margin-bottom: 8rem;
 }
+.u-margin-bottom-medium {
+    margin-bottom: 4rem;
+}
 
 .u-margin-top-huge {
     margin-top: 10rem;
@@ -823,4 +826,37 @@ body {
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
     
+}
+
+.book__form {
+    width: 50%;
+    padding: 6rem;
+}
+
+.form__group {
+
+}
+
+.form__input {
+font-size: 1.5rem;
+padding: 1.5rem 2rem;
+border-radius: 3px;
+background-color: rgba(255, 255, 255, .5);
+border: none;
+/* we defined the font family to lato at the beginning so now it can inherit it */
+font-family: inherit;
+transition: all .3s;
+}
+
+.form__input:focus {
+    outline: none;
+}
+
+.form__group:not(:last-child) {
+    /* to have margin-bottom except for last child = last form group element */
+    margin-bottom: 2rem;
+}
+
+.form__label {
+
 }
