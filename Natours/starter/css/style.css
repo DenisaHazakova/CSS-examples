@@ -797,5 +797,30 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
+
+}
+
+.section-book {
+    padding: 15rem 0;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111), rgba(40, 180, 133));
+
+}
+
+.book {
+    /* solid linear-gradient:
+    1. specify degree of gradient
+    2. at the left of th image i want to have white for 90%
+    3. at the center of the img i want to have 90% of white
+    but at the same time i want to have at the cneter of img the background-image itself so i set last color to transparent
+    - if i define the first and second color to the same point (50% in our case) it will create solid line - separator of these two colors */
+    background-image: linear-gradient(105deg,
+        rgba(255, 255, 255, .9) 0%, 
+        rgba(255, 255, 255, .9) 50%,
+        transparent 50%
+        ), url(../img/nat-10.jpg);
+    background-size: 100%; /*the same as cover property */
+    height: 50rem;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
     
 }
