@@ -821,7 +821,7 @@ body {
         rgba(255, 255, 255, .9) 50%,
         transparent 50%
         ), url(../img/nat-10.jpg);
-    background-size: 100%; /*the same as cover property */
+    background-size: 100%; /*the same as cover property = occupy the entire container where background-img is applied */
     height: 50rem;
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
@@ -833,9 +833,9 @@ body {
     padding: 6rem;
 }
 
-.form__group {
+/* .form__group {
 
-}
+} */
 
 .form__input {
 font-size: 1.5rem;
