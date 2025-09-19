@@ -859,6 +859,7 @@ border-bottom: 3px solid transparent;
 width: 90%;
 display: block;
 color: inherit;
+transition: all .3s;
 }
 
 .form__input:focus {
@@ -903,4 +904,6 @@ example: input, div, button, label. and we want to apply the styles only for inp
 opacity: 0;
 visibility: hidden;
 /* we can use for opacity and visibility transition method so it will be applied nicely. once we start typing the whole pseudo class :placeholder-shown will be inactivated because placeholder will be not shown. the transition property needs to be defined on the .form__label */
+/* we want to be label displayed down from the input, we can use translate method */
+transform: translateY(-3rem);
 }
