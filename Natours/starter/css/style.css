@@ -907,3 +907,14 @@ visibility: hidden;
 /* we want to be label displayed down from the input, we can use translate method */
 transform: translateY(-3rem);
 }
+
+/* radio buttons */
+.form__radio-group {
+    display: inline-block;
+    width: 49%;
+}
+
+.form__radio-label {
+    font-size: 1.6rem;
+    cursor: pointer;
+}
