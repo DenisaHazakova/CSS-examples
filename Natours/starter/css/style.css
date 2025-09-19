@@ -1,15 +1,24 @@
 /*
 COLORS:
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+color-primary: #55c57a (Medium green);
+color-primary-light: #7ed56f (Light green);
+color-primary-dark: #28b485 (Dark green);
 
 color-secondary-light: #ffb900 (orange);
 color-secondary-dark: #ff7740 (darker orange);
 
 color-tertiary-light: #2998ff (blue)
 color-tertiary-dark: #6643fa (dark blue)*/
+
+/* color-grey-light-1: #f7f7f7;
+color-grey-light-2: #eee; */
+
+/* color-grey-dark: #777; */
+/* color-grey-dark-2: #999;
+
+color-white: #fff;
+color-black: #000;*/
 
 /* FONT SIZES:
 
@@ -846,10 +855,26 @@ border: none;
 /* we defined the font family to lato at the beginning so now it can inherit it */
 font-family: inherit;
 transition: all .3s;
+border-bottom: 3px solid transparent;
+width: 90%;
+display: block;
+color: inherit;
 }
 
 .form__input:focus {
     outline: none;
+    /* if the inputs are valid the border bottom will be green */
+    border-bottom: 3px solid #7ed56f;
+    box-shadow: 0 1rem 2rem rgb(0, 0, 0, .1);
+}
+
+.form__input:focus:invalid {
+    /* if the name of input will be missing or email address will be invalid, then bottom border would be orange */
+    border-bottom: 3px solid #ff7740;
+}
+
+.form__input::-webkit-input-placeholder {
+color: #999;
 }
 
 .form__group:not(:last-child) {
@@ -858,5 +883,10 @@ transition: all .3s;
 }
 
 .form__label {
-
+font-size: 1.2rem;
+font-weight: 700;
+margin-left: 2rem;
+margin-top: .7rem;
+/* with display block margin will work properly so label will be alligned with placeholder text */
+display: block;
 }
