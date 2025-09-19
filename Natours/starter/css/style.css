@@ -889,4 +889,18 @@ margin-left: 2rem;
 margin-top: .7rem;
 /* with display block margin will work properly so label will be alligned with placeholder text */
 display: block;
+/* code below show label under the input */
+transition: all .5s;
+}
+
+
+/* within this we can style label element
+with "+" we select siblings, since input and label are siblings. It is important to have defined firstly the input element in html and then the label element so it will work properly
+if there were any other siblings in between input and label the "+" would not work
+example: input, div, button, label. and we want to apply the styles only for input and label, we use "~" instead */
+.form__input:placeholder-shown + .form__label {
+/* by default after website loading the placeholder is shown in input and also the label. We want to hide the label because placeholder is shown, so we use opacity and hidden: */
+opacity: 0;
+visibility: hidden;
+/* we can use for opacity and visibility transition method so it will be applied nicely. once we start typing the whole pseudo class :placeholder-shown will be inactivated because placeholder will be not shown. the transition property needs to be defined on the .form__label */
 }
