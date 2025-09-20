@@ -213,6 +213,7 @@ body {
     }
 }
 
+.btn,
 /* targets anchor tags (<a>) that have not been visited by the user yet */
 .btn:link,
 /* targets anchor tags that the user has already visited. */
@@ -231,6 +232,8 @@ body {
     transition: all .2s;
     position: relative;
     font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
 }
 
 
@@ -238,14 +241,21 @@ body {
     /* y axis moves from top to bottom, so zero value is on the top of the screen. so with positive value we move from top to the bottom. But we want to move up so we need to use negative value: */
     transform: translateY(-3px);
     /* first parameter is shadow in x direction (in our case zero), the second parameter is y direction, third parameter is size of shadow. Last param is a color and opacity */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
 }
 
 /* button after click:  */
-.btn:active {
-    transform: translateY(-5px);
+.btn:active,
+.btn:focus {
+    transform: translateY(-1px);
     /* when we click we want to have smaller shadow and to go down */
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
+    outline: none;
 }
 
 .btn--white {
@@ -416,6 +426,7 @@ body {
 .u-margin-bottom-big {
     margin-bottom: 8rem;
 }
+
 .u-margin-bottom-medium {
     margin-bottom: 4rem;
 }
@@ -826,15 +837,15 @@ body {
     but at the same time i want to have at the cneter of img the background-image itself so i set last color to transparent
     - if i define the first and second color to the same point (50% in our case) it will create solid line - separator of these two colors */
     background-image: linear-gradient(105deg,
-        rgba(255, 255, 255, .9) 0%, 
-        rgba(255, 255, 255, .9) 50%,
-        transparent 50%
-        ), url(../img/nat-10.jpg);
-    background-size: 100%; /*the same as cover property = occupy the entire container where background-img is applied */
+            rgba(255, 255, 255, .9) 0%,
+            rgba(255, 255, 255, .9) 50%,
+            transparent 50%), url(../img/nat-10.jpg);
+    background-size: 100%;
+    /*the same as cover property = occupy the entire container where background-img is applied */
     height: 50rem;
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
-    
+
 }
 
 .book__form {
@@ -847,19 +858,19 @@ body {
 } */
 
 .form__input {
-font-size: 1.5rem;
-padding: 1.5rem 2rem;
-border-radius: 3px;
-background-color: rgba(255, 255, 255, .5);
-border: none;
-/* we defined the font family to lato at the beginning so now it can inherit it */
-font-family: inherit;
-transition: all .3s;
-border-bottom: 3px solid transparent;
-width: 90%;
-display: block;
-color: inherit;
-transition: all .3s;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, .5);
+    border: none;
+    /* we defined the font family to lato at the beginning so now it can inherit it */
+    font-family: inherit;
+    transition: all .3s;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+    color: inherit;
+    transition: all .3s;
 }
 
 .form__input:focus {
@@ -875,7 +886,7 @@ transition: all .3s;
 }
 
 .form__input::-webkit-input-placeholder {
-color: #999;
+    color: #999;
 }
 
 .form__group:not(:last-child) {
@@ -884,14 +895,14 @@ color: #999;
 }
 
 .form__label {
-font-size: 1.2rem;
-font-weight: 700;
-margin-left: 2rem;
-margin-top: .7rem;
-/* with display block margin will work properly so label will be alligned with placeholder text */
-display: block;
-/* code below show label under the input */
-transition: all .5s;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    /* with display block margin will work properly so label will be alligned with placeholder text */
+    display: block;
+    /* code below show label under the input */
+    transition: all .5s;
 }
 
 
@@ -899,13 +910,13 @@ transition: all .5s;
 with "+" we select siblings, since input and label are siblings. It is important to have defined firstly the input element in html and then the label element so it will work properly
 if there were any other siblings in between input and label the "+" would not work
 example: input, div, button, label. and we want to apply the styles only for input and label, we use "~" instead */
-.form__input:placeholder-shown + .form__label {
-/* by default after website loading the placeholder is shown in input and also the label. We want to hide the label because placeholder is shown, so we use opacity and hidden: */
-opacity: 0;
-visibility: hidden;
-/* we can use for opacity and visibility transition method so it will be applied nicely. once we start typing the whole pseudo class :placeholder-shown will be inactivated because placeholder will be not shown. the transition property needs to be defined on the .form__label */
-/* we want to be label displayed down from the input, we can use translate method */
-transform: translateY(-3rem);
+.form__input:placeholder-shown+.form__label {
+    /* by default after website loading the placeholder is shown in input and also the label. We want to hide the label because placeholder is shown, so we use opacity and hidden: */
+    opacity: 0;
+    visibility: hidden;
+    /* we can use for opacity and visibility transition method so it will be applied nicely. once we start typing the whole pseudo class :placeholder-shown will be inactivated because placeholder will be not shown. the transition property needs to be defined on the .form__label */
+    /* we want to be label displayed down from the input, we can use translate method */
+    transform: translateY(-3rem);
 }
 
 /* radio buttons */
@@ -917,4 +928,49 @@ transform: translateY(-3rem);
 .form__radio-label {
     font-size: 1.6rem;
     cursor: pointer;
+    position: relative;
+    padding-left: 5rem;
+}
+
+.form__radio-button {
+    width: 3rem;
+    height: 3rem;
+    /* for border and border-radius working we need to use display property. with inline block the span and radio button are side by side */
+    border: 5px solid #55c57a;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.8rem;
+}
+
+.form__radio-button::after {
+    content: "";
+    display: block;
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    transform: translate(-50% -50%);
+    background-color: #55c57a;
+    opacity: 0;
+    transition: opacity .2s
+}
+
+
+/* we want to style the span element inside the label element */
+.form__radio-input:checked {
+    opacity: 1;
+}
+
+/* the input and label are siblings, so we can use "+"
+the -button is the child of label so we can just use empty space */
+.form__radio-input:checked+.form__radio-label .form__radio-button::after {
+    opacity: 1;
+}
+
+.form__radio-input {
+    display: none;
 }
