@@ -1221,3 +1221,12 @@ the -button is the child of label so we can just use empty space */
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* POPUP SECTION  */
+.popup__left{}
+
+.popup__right{}
+
+.popup__img{}
+
+.popup__text{}
