@@ -1211,7 +1211,6 @@ the -button is the child of label so we can just use empty space */
 
 .popup__content {
     width: 75%;
-    height: 50rem;
     background-color: white;
     box-shadow: 0 2rem 4rem rgb(0, 0, 0, .2);
     border-radius: 3px;
@@ -1220,13 +1219,39 @@ the -button is the child of label so we can just use empty space */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: table;
+    overflow: hidden;
 }
 
 /* POPUP SECTION  */
-.popup__left{}
+.popup__left{
+    /* one third of block */
+    width: 33.33333%;
+    display: table-cell;
+}
 
-.popup__right{}
+.popup__right{
+    /* two third of block */
+    width: 66.666666%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+}
 
-.popup__img{}
+.popup__img{
+    display: block;
+    width: 100%;
+}
 
-.popup__text{}
+.popup__text{
+    margin-bottom: 4rem;
+    font-size: 1.4rem;
+    /* to create 2 columns of text side by side */
+    column-count: 2;
+    /* gap between the columns */
+    column-gap: 4rem;
+    /* border between the columns */
+    column-rule: 1px solid #eee;
+    /* to cut the letter at the end of the columns correctly if there is no more space */
+    hyphens: auto;
+}
