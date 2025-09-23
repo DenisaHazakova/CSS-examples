@@ -1214,9 +1214,15 @@ the -button is the child of label so we can just use empty space */
     transition: all .3s;
 }
 
+/* open states of popup */
 .popup:target {
     visibility: visible;
     opacity: 1;
+}
+
+.popup:target .popup__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .popup__content {
@@ -1228,9 +1234,11 @@ the -button is the child of label so we can just use empty space */
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     display: table;
     overflow: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.25);
+    transition: all .5s .2s;
 }
 
 /* POPUP SECTION  */
@@ -1277,7 +1285,7 @@ the -button is the child of label so we can just use empty space */
     font-size: 3rem;
     text-decoration: none;
     display: inline-block;
-    transition: all .3s;
+    transition: all .2s;
     line-height: 1;
 }
 
