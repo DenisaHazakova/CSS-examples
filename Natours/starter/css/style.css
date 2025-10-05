@@ -28,10 +28,10 @@ default-font-size: 1.6rem;
 
 
 /* MEDIA QUERY MANAGER
- 0 - 600px:     Phone
- 600 - 900px:   Tablet portrait
- 9000 - 1200px: Tablet landscape
- 1200 - 1800px: is where our normal styles apply
+ 0 - 600px: max-width 600px = 37.5em    Phone
+ 600 - 900px:  max-width 900px = 56.25em  Tablet portrait
+ 9000 - 1200px: max-width 1200px = 75em Tablet landscape
+ 1200 - 1800px: max-width 1800px = 112.5em is where our normal styles apply
  1800px +:      Big desktop*/
 
 /* respond-phone: max-width: 600px
@@ -52,19 +52,19 @@ html {
 
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 75em) {
     html {
         font-size: 56.25%;
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     html {
         font-size: 50%;
     }
 }
 
-@media only screen and (min-width: 1800px) {
+@media only screen and (min-width: 112.5em) {
     html {
         font-size: 75%
     }
@@ -99,7 +99,7 @@ body {
     box-sizing: border-box;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     body {
         padding: 0;
     }
@@ -112,7 +112,7 @@ body {
     /* to achieve colorful background with image, we use two paramaters here: */
     /* first parameter in linear-gradient we specify direction of gradient (to left, to bottom, to right, ...) */
     /* to show the background page we use opacity in colors. Fourth parameter in rgba is opacity value */
-    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/hero.jpg);
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/hero-small.jpg);
     /* cover: always fit the size of the box so it will not overflow the viewport */
     background-size: cover;
     /* with the change of viewport size always show the top of the background */
@@ -122,7 +122,21 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-@media only screen and (min-width: 600px) {
+/* device resolution vs responsive images:
+dpi - dots per inch
+192 dpi - resolution of retina screen = high resolution screen
+with an "and" we can define more than one condition 
+with a comma we define another condition. Comma here has the same function as operator "or"
+we want to display img/hero when width of device is starting from 2000px */
+@media (min-resolution: 192dpi) and (min-width:37.5em),
+(min-width:125em) {
+    .header {
+        background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)),
+            url(../img/hero.jpg);
+    }
+}
+
+@media only screen and (min-width: 37.5em) {
     .header {
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     }
@@ -185,7 +199,7 @@ body {
     /* animation-iteration-count: 3; */
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 37.5em) {
     .heading-primary--main {
         letter-spacing: 1rem;
         font-size: 5rem;
@@ -208,7 +222,7 @@ body {
     margin-bottom: 6rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 37.5em) {
     .heading-primary--sub {
         letter-spacing: .5rem;
     }
@@ -382,7 +396,7 @@ body {
     margin: 0 auto;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .row {
         max-width: 50rem;
         pad: 0 3rem;
@@ -395,7 +409,7 @@ body {
     margin-bottom: 80px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .row>*:not(:last-child) {
         margin-bottom: 6rem;
     }
@@ -414,7 +428,7 @@ body {
     float: left;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     [class^="col-"] {
         width: 100% !important;
     }
@@ -426,7 +440,7 @@ body {
 
 }
 
-@media only screen and (max-width:900) {
+@media only screen and (max-width:56.25em) {
     [class^="col-1"]:not(:last-child) {
         margin-right: 0;
         margin-bottom: 6rem;
@@ -475,7 +489,7 @@ body {
     margin-top: -20vh;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .section-about {
         padding: 20rem 0;
     }
@@ -497,14 +511,14 @@ body {
     letter-spacing: .2rem;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .heading-secondary {
         font-size: 3rem;
         margin-top: 2rem;
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 37.5em) {
     .heading-secondary {
         font-size: 2.5rem;
         margin-top: 3rem;
@@ -533,7 +547,7 @@ body {
     margin-bottom: 8rem;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .u-margin-bottom-big {
         margin-bottom: 5rem !important;
     }
@@ -543,7 +557,7 @@ body {
     margin-bottom: 4rem;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .u-margin-bottom-medium {
         margin-bottom: 3rem !important;
     }
@@ -613,7 +627,7 @@ body {
     /* transform: scale(0.7); */
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .composition__photo {
         float: left;
         width: 33.333333333%;
@@ -628,7 +642,7 @@ body {
     left: 0;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .composition__photo--p1 {
         top: 0;
         transform: scale(1.2);
@@ -640,7 +654,7 @@ body {
     right: 0;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .composition__photo--p2 {
         top: -1rem;
         transform: scale(1.3);
@@ -653,7 +667,7 @@ body {
     left: 20%;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .composition__photo--p3 {
         top: 1rem;
         left: 0;
@@ -694,7 +708,7 @@ body {
     transform: skewY(7deg);
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .section-features {
         padding: 10rem 0;
     }
@@ -710,7 +724,7 @@ body {
     transition: all .3s;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .feature-box {
         padding: 2rem;
     }
@@ -729,7 +743,7 @@ body {
     color: transparent;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .feature-box__icon {
         margin-bottom: 0;
     }
@@ -742,7 +756,7 @@ body {
     margin-top: -20vh;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .section-tours {
         padding: 20rem 0 10rem 0;
         ;
@@ -906,7 +920,7 @@ body {
     padding: 15rem 0;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .section-stories {
         padding: 10rem 0;
     }
@@ -926,7 +940,7 @@ body {
     margin-bottom: 4rem;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .story {
         width: 100%;
         padding: 4rem;
@@ -934,7 +948,7 @@ body {
     }
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:37.5em) {
     .story {
         transform: skewX(0);
     }
@@ -962,7 +976,7 @@ body {
     transform: translateX(-3rem) skewX(12deg);
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:37.5em) {
     .story__shape {
         transform: translateX(-3rem) skewX(0);
     }
@@ -980,7 +994,7 @@ body {
     transform: skewX(12deg);
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:37.5em) {
     .story__text {
         transform: skewX(0);
     }
@@ -1053,7 +1067,7 @@ body {
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
 }
 
-@media only screen and (max-width:1200px) {
+@media only screen and (max-width:75em) {
     .book {
         background-image: linear-gradient(105deg,
                 rgba(255, 255, 255, .9) 0%,
@@ -1063,7 +1077,7 @@ body {
     }
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .book {
         background-image: linear-gradient(to right,
                 rgba(255, 255, 255, .9) 0%,
@@ -1076,13 +1090,13 @@ body {
     padding: 6rem;
 }
 
-@media only screen and (max-width:1200px) {
+@media only screen and (max-width:75em) {
     .book__form {
         width: 65%;
     }
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .book__form {
         width: 100%;
     }
@@ -1105,7 +1119,7 @@ body {
     transition: all .3s;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .form__input {
         width: 100%;
     }
@@ -1162,11 +1176,11 @@ example: input, div, button, label. and we want to apply the styles only for inp
     width: 49%;
 }
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .form__radio-group {
-    width: 100%;
-    margin-bottom: 2rem;
-}
+        width: 100%;
+        margin-bottom: 2rem;
+    }
 
 }
 
@@ -1227,7 +1241,7 @@ the -button is the child of label so we can just use empty space */
     color: #f7f7f7;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .footer {
         padding: 8rem 0;
     }
@@ -1238,7 +1252,7 @@ the -button is the child of label so we can just use empty space */
     margin-bottom: 8rem;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .footer__logo-box {
         margin-bottom: 6rem;
     }
@@ -1255,7 +1269,7 @@ the -button is the child of label so we can just use empty space */
     display: inline-block;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .footer__navigation {
         width: 100%;
         text-align: center;
@@ -1303,7 +1317,7 @@ the -button is the child of label so we can just use empty space */
     width: 80%;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .footer__copyright {
         width: 100%;
         float: none;
@@ -1328,14 +1342,14 @@ the -button is the child of label so we can just use empty space */
     cursor: pointer;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .navigation__button {
         top: 4rem;
         right: 4rem;
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 37.5em) {
     .navigation__button {
         top: 3rem;
         right: 3rem;
@@ -1355,14 +1369,14 @@ the -button is the child of label so we can just use empty space */
     transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1);
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 56.25em) {
     .navigation__background {
         top: 4.5rem;
         right: 4.5rem;
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 37.5em) {
     .navigation__background {
         top: 3.5rem;
         right: 3.5rem;
@@ -1539,12 +1553,48 @@ the -button is the child of label so we can just use empty space */
     transition: all .5s .2s;
 }
 
+@media only screen and (max-width:56.25em) {
+    .popup__content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 /* POPUP SECTION  */
 .popup__left {
     /* one third of block */
     width: 33.33333%;
     display: table-cell;
 }
+
+@media only screen and (max-width:75em) {
+    .popup__left {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width:56.25em) {
+    .popup__left img:last-child {
+        margin-top: 0rem;
+    }
+}
+
+@media only screen and (max-width:56.25em) {
+    .popup__left {
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    }
+}
+
 
 .popup__right {
     /* two third of block */
@@ -1554,9 +1604,33 @@ the -button is the child of label so we can just use empty space */
     padding: 3rem 5rem;
 }
 
+@media only screen and (max-width:56.25em) {
+    .popup__right {
+        display: block;
+        width: 100%;
+    }
+}
+
 .popup__img {
     display: block;
-    width: 100%;
+    width: 50%;
+    margin-top: 0;
+}
+
+@media only screen and (max-width:75em) {
+    .popup__img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width:56.25em) {
+    .popup__img {
+        flex-grow: 2;
+        margin-top: 0;
+        height: 150px;
+    }
 }
 
 .popup__text {
@@ -1570,6 +1644,12 @@ the -button is the child of label so we can just use empty space */
     column-rule: 1px solid #eee;
     /* to cut the letter at the end of the columns correctly if there is no more space */
     hyphens: auto;
+}
+
+@media only screen and (max-width:37.5em) {
+    .popup__text {
+        column-count: 1;
+    }
 }
 
 .popup__close,
@@ -1592,7 +1672,7 @@ the -button is the child of label so we can just use empty space */
 }
 
 
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:56.25em) {
     .card {
         height: auto;
         border-radius: 3px;
