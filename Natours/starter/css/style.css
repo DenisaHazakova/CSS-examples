@@ -1693,8 +1693,8 @@ the -button is the child of label so we can just use empty space */
     color: #55c57a;
 }
 
-
-@media only screen and (max-width:56.25em) {
+/* with condition only screen and (hover:none) we can apply following code also for touch devices which do not have hover functions */
+@media only screen and (max-width:56.25em), only screen and (hover:none) {
     .card {
         height: auto;
         border-radius: 3px;
