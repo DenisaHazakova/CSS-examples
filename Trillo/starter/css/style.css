@@ -66,13 +66,17 @@ body {
 }
 
 .content {
-
+    display: flex;
 }
 
 .sidebar {
-
+    background-color: var(--color-grey-dark-1);
+    /* 0: do not grow, 0:do not shrink, occupy width of 18% */
+    flex: 0 0 18%;
 }
 
 .hotel-view {
-
+    background-color: #fff;
+    /* with flex 1 it will occupy max width of the container. In our case 100%-18%=82% */
+    flex: 1;
 }
