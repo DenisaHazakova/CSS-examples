@@ -14,6 +14,9 @@ store to root parent element so the variables can be accessed globally */
     --color-grey-dark-1: #333;
     --color-grey-dark-2: #777;
     --color-grey-dark-3: #999;
+
+    /* box shadow */
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
 }
 
 * {
@@ -42,4 +45,34 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
     color: var(--color-grey-dark-2);
+}
+
+.container {
+    /* if the size of screen allows it, width occupies 120rem, if not it occupies 100% */
+    max-width: 120rem;
+    /* centralize the inner elements */
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-dark);
+    /* testing purposes */
+    min-height: 50rem;
+
+}
+
+.header {
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--color-grey-light-2);
+}
+
+.content {
+
+}
+
+.sidebar {
+
+}
+
+.hotel-view {
+
 }
