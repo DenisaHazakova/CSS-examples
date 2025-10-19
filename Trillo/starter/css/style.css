@@ -1,82 +1,661 @@
 /* VARIABLES DECLARATION = CSS custom properties
 store to root parent element so the variables can be accessed globally */
 :root {
-    /* colors */
-    --color-primary: #eb2f64;
-    --color-light: #FF3366;
-    --color-dark: #BA265D;
+  /* colors */
+  --color-primary: #eb2f64;
+  --color-light: #ff3366;
+  --color-dark: #ba265d;
 
-    --color-grey-light-1: #faf9f9;
-    --color-grey-light-2: #f4f2f2;
-    --color-grey-light-3: #f0eeee;
-    --color-grey-light-4: #ccc;
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
 
-    --color-grey-dark-1: #333;
-    --color-grey-dark-2: #777;
-    --color-grey-dark-3: #999;
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
 
-    /* box shadow */
-    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
+  /* box shadow */
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+  /* border */
+  --border-bottom: 1px solid var(--color-grey-light-2);
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html {
-    box-sizing: border-box;
-    font-size: 62, 5%;
-    /* 1rem = 10px  10px/16px = 62,5%*/
+  box-sizing: border-box;
+  font-size: 62, 5%;
+  /* 1rem = 10px  10px/16px = 62,5%*/
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-dark));
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    color: var(--color-grey-dark-2);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-dark)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--color-grey-dark-2);
 }
 
 .container {
-    /* if the size of screen allows it, width occupies 120rem, if not it occupies 100% */
-    max-width: 120rem;
-    /* centralize the inner elements */
-    margin: 8rem auto;
-    background-color: var(--color-grey-light-2);
-    box-shadow: var(--shadow-dark);
-    /* testing purposes */
-    min-height: 50rem;
-
+  /* if the size of screen allows it, width occupies 120rem, if not it occupies 100% */
+  max-width: 120rem;
+  /* centralize the inner elements */
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-2);
+  box-shadow: var(--shadow-dark);
+  /* testing purposes */
+  min-height: 50rem;
 }
 
 .header {
-    height: 7rem;
-    background-color: #fff;
-    border-bottom: var(--color-grey-light-2);
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: 1px solid var(--color-grey-light-2);
+  /* want to style its children: logo, search bar, icons, so we use flex */
+  display: flex;
+  /* align items accros main axis (horizontally in this case) */
+  justify-content: space-between;
+  /* align items across cross axis (vertically in this case) */
+  align-items: center;
 }
 
 .content {
-    display: flex;
+  display: flex;
 }
 
-.sidebar {
-    background-color: var(--color-grey-dark-1);
-    /* 0: do not grow, 0:do not shrink, occupy width of 18% */
-    flex: 0 0 18%;
+/* COMPONENTS SECTION */
+
+/* LOGO */
+.logo {
+  height: 3.25rem;
+  margin-left: 2rem;
 }
+
+/* SEARCH */
+.search {
+  /* we do not want to grow and shrink, set width to 40% */
+  flex: 0 0 40%;
+  /* use flex so we can style flex items of this parent: search input and button */
+  display: flex;
+  /*cross axis */
+  align-items: center;
+  /* main aixs */
+  justify-content: center;
+}
+
+.search__input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: var(--color-grey-light-2);
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 100px;
+  width: 90%;
+  transition: all 0.2s;
+  /* we can use negative value of margin so the button elemenet will be on top of the search input */
+  margin-right: -3.25rem;
+}
+
+.search__input:focus {
+  outline: none;
+  width: 100%;
+  background-color: var(--color-grey-light-3);
+}
+
+.search__input:focus + .search__button {
+  background-color: var(--color-grey-light-3);
+}
+
+/* change of placeholder text of .search__input */
+.search__input::-webkit-input-placeholder {
+  font-weight: 100;
+  color: var(--color-grey-light-4);
+}
+
+.search__button {
+  border: none;
+  background-color: var(--color-grey-light-2);
+}
+
+.search__button:focus {
+  outline: none;
+}
+
+.search__button:active {
+  transform: translateY(2px);
+}
+
+/* search icon */
+.search__icon {
+  height: 2rem;
+  width: 2rem;
+  /* we can change the color of icon with property fill */
+  fill: var(--color-grey-dark-3);
+}
+
+/* USER NAVIGATION*/
+.user-nav {
+  display: flex;
+  align-items: center;
+  /* to occupy whole height as the biggest element */
+  align-self: stretch;
+}
+
+/* following styles apply for all direct children of user--nav */
+.user-nav > * {
+  padding: 0 2rem;
+  cursor: pointer;
+  /* want to use 100% of height of the container */
+  height: 100%;
+  display: flex;
+  /* align them to center across the cross axis */
+  align-items: center;
+}
+
+.user-nav > *:hover {
+  /* when hover over the children elements of user-nav, make gray color */
+  background-color: var(--color-grey-light-2);
+}
+
+.user-nav__icon-box {
+  position: relative;
+}
+/* bookmark and message icon */
+.user-nav__icon {
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
+.user-nav__notification {
+  font-size: 0.8rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 100px;
+  background-color: var(--color-primary);
+  color: white;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.1rem;
+  /* we can use flex here and center the text of this span element so text will be its child */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-nav__user-photo {
+  height: 3.75rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+/* //// SIDE NAVIGATION BAR //// */
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+  /* 0: do not grow, 0:do not shrink, occupy width of 18% */
+  flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  /* first item at the start of the container, last flex item on the end of the container */
+  justify-content: space-between;
+}
+
+.side-nav {
+  list-style: none;
+  font-size: 1.4rem;
+  margin-top: 3.5rem;
+}
+
+.side-nav__item {
+  position: relative;
+}
+
+/* apply margin-bottom except for last child */
+.side-nav__item:not(:last-child) {
+  margin-bottom: 0.3rem;
+}
+
+/* styles to apply on side-nav__item in default state */
+.side-nav__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--color-primary);
+  /* in normal state we define scaleY to zero  */
+  transform: scaleY(0);
+  /* always define transition on before pseudo element */
+  /* first transition: transform with time .2s to happen
+    second transition: to apply 100% of width on element: it will wait .2s (exact time of transform transition), then apply cubis bezier within .4s 
+    last transition is background color: we use it on active element .side-nav_item, by default "Hotel"*/
+  transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+    background-color 0.1s;
+}
+
+.side-nav__item:hover::before,
+/* we set -active element in html to be "Hotel" */
+.side-nav__item-active::before {
+  /* after hover over the element the "pink effect" defined in before element will show as transform scaleY =
+    it will grow from the middle across the Y axis because we applied scaleY */
+  transform: scaleY(1);
+  /* after hover we change width of effect from 3px (defined in before element) to 100% (it will cover whole element .side-nav__item) */
+  width: 100%;
+}
+
+/* apply different background-color on active element "Hotel" one */
+.side-nav__item:active::before {
+  background-color: var(--color-light);
+}
+
+.side-nav__link:link,
+.side-nav__link:visited {
+  color: var(--color-grey-light-1);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  /* within element .side-nav__item we specified few transition which completely cover the text and icon = children of this element
+  we want to display it so we use high z-index. Together with z-index the position needs to be defined. */
+  position: relative;
+  z-index: 10;
+}
+
+.side-nav__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  /* currentColor variable: use the same color as its parent has = 
+  the parent element in this case is .side-nav__link which uses --color-grey-light-1 */
+  fill: currentColor;
+  margin-right: 2rem;
+}
+
+/* //// LEGAL TEXT //// */
+
+.legal {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--color-grey-light-4);
+}
+
+/* //// HOTEL VIEW SECTION //// */
 
 .hotel-view {
-    background-color: #fff;
-    /* with flex 1 it will occupy max width of the container. In our case 100%-18%=82% */
-    flex: 1;
+  background-color: #fff;
+  /* with flex 1 it will occupy max width of the container. In our case 100%-18%=82% */
+  flex: 1;
+}
+
+/* //// GALLERY //// */
+.gallery {
+  display: flex;
+}
+
+/* .gallery__item {
+
+} */
+
+.gallery__photo {
+  width: 100%;
+  display: block;
+}
+
+/* //// HOTEL OVERVIEW //// */
+.overview {
+  display: flex;
+  border-bottom: 1px solid var(--color-grey-light-2);
+  align-items: center;
+}
+
+.overview__heading {
+  font-size: 2.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1.5rem 3rem;
+}
+
+.overview__stars {
+  /* the element overview__stars are no longer flex-items with display flex so bottom space they had is gone 
+    and the stars can be perfectly centered also across cross axis*/
+  display: flex;
+  margin-right: auto;
+}
+.overview__icon-location {
+  margin-right: 0.5rem;
+}
+
+.overview__icon-star,
+.overview__icon-location {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: var(--color-primary);
+}
+
+.overview__location {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+/* //// BUTTON INLINE //// */
+
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit;
+  border-bottom: 1px solid currentColor;
+  background-color: transparent;
+  padding-bottom: 2px;
+  display: inline-block;
+  cursor: pointer;
+  transition: margin-all 0.2s;
+}
+
+.btn-inline span {
+  margin-left: 3px;
+  transition: margin-left 0.2s;
+}
+
+.btn-inline:hover {
+  color: var(--color-primary);
+  background-color: inherit;
+}
+
+.btn-inline:hover span {
+  margin-left: 8px;
+}
+
+/* when the mouse is over the element for long time (hover is when we visit and leave) */
+.btn-inline:focus {
+  outline: none;
+  animation: pulsate 1s infinite;
+}
+
+@keyframes pulsate {
+  /* initial state */
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  /* animation running */
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgb(0, 0, 0, 0.25);
+  }
+  /* end state */
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+.overview__rating {
+  background-color: var(--color-primary);
+  color: white;
+  margin-left: 3rem;
+  align-self: stretch;
+  padding: 0 2.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.overview__rating-average {
+  font-size: 2.25rem;
+  font-weight: 300;
+  margin-bottom: -3px;
+}
+
+.overview__rating-count {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* //// DETAIL //// */
+.detail {
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--border-bottom);
+  font-size: 1.4rem;
+}
+
+.description {
+  font-size: 1.4rem;
+  background-color: white;
+  /* i do not want to grow and shrink (0 0), basis=width to be 60% */
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+}
+
+/* //// PARAGRAPH //// */
+/* we have to paragraph elements with class .paragraph and we do not want to apply the margin-bottom for the second one - last one */
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+/* //// LIST //// */
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--border-bottom);
+  border-bottom: var(--border-bottom);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list__item {
+  flex: 0 0 50%;
+  margin-bottom: 0.7rem;
+}
+
+.list__item::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.7rem;
+
+  /* Older browsers */
+  /* background-image: url(../img/chevron-right.svg);
+    background-size: cover; */
+
+  /* Newer browsers - masks */
+  background-color: var(--color-primary);
+  mask-image: url(../img/chevron-right.svg);
+  mask-size: cover;
+  -webkit-mask-image: url(../img/chevron-right.svg);
+  -webkit-mask-size: cover;
+}
+/* //// RECOMMEND //// */
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recommend__photo {
+  box-sizing: content-box;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.recommend__photo:not(:last-of-type) {
+  margin-right: -1.5rem;
+}
+
+/* //// REVIEWS //// */
+.user-reviews {
+  /* i want for this element to occupy the rest of space of teh container */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review {
+  background-color: white;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* we want to have an icon as quotation mark
+from website: https://css-tricks.com/snippets/html/glyphs/ we can se it directly in CSS in content property */
+.review::before {
+  content: "\201C";
+  position: absolute;
+  top: -2.75rem;
+  left: -1rem;
+  font-size: 20rem;
+  font-family: sans-serif;
+  line-height: 1;
+  color: var(--color-grey-light-2);
+}
+
+.review__text {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.review__user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review__photo {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+
+.review__user-box {
+  margin-right: auto;
+}
+
+.review__user-name {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+
+.review__user-date {
+  font-size: 1rem;
+  color: var(--color-grey-dark-3);
+}
+
+.review__rating {
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  font-weight: 300;
+}
+
+/* //// CALL TO ACTION //// */
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+}
+
+.cta__book-now {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    var(--color-light),
+    var(--color-dark)
+  );
+  color: white;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-image: linear-gradient(
+    to left,
+    var(--color-light),
+    var(--color-dark)
+  );
+}
+
+.btn:focus {
+    outline: none;
+    animation: pulsate 1s infinite;
+}
+
+.btn__visible {
+  display: inline-block;
+  padding: 2rem 7.5rem;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+/* this element will be hidden exactly at the top of the .btn__visible */
+.btn__invisible {
+  display: inline-block;
+  position: absolute;
+  padding: 2rem 0rem;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: -100%;
+  transition: all 0.2s;
+}
+
+.btn:hover .btn__visible {
+  transform: translateY(100%);
+}
+
+.btn:hover .btn__invisible {
+  top: 0;
 }
