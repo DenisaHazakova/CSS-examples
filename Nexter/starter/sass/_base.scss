@@ -37,4 +37,20 @@ body {
 .container {
   display: grid;
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  //   8rem for the first column sidebar and the other 8 will have maximum width of column 14rem but always the min width would be
+  // their content
+  // two times 1 fr= they fill the remaining space of viewport and ensure that 8 columns in between will be centered and sidebar
+  // will be on the left
+  // why minmax within 1fr? As the screen decrease the remaining space disapear from 1fr but we want always to have some margin
+  // so we define min width as 6rem and max as 1fr
+  grid-template-columns:
+    [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+    [center-end] minmax(6rem, 1fr) [full-end];
+  // all direct children of container will apply the following styles
+  & > * {
+    // test purposes - will be deleted later
+    padding: 40px;
+    font-size: 3rem;
+  }
 }
