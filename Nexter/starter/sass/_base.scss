@@ -18,6 +18,7 @@ $font-display: "Josefin Sans", sans-serif;
 $bp-largest: 75em; // 1200px
 $bp-large: 62.5em; //1000px
 $bp-medium: 50em; // 800px
+$bp-small: 37.5em; // 600px
 
 *,
 *::before,
@@ -69,9 +70,8 @@ body {
     // need to add new row for realtors to be under header section (create third row)
     // for the second row we want to have full 100vh to have whole width of entire row, we use calc function
     // to substract vh and 6rem of the sidebar - first row
-    grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content 40vw repeat(
-        3,
-        min-content
-      );
+    // the rest of the rows not defined will be treated as the implicit ones = treated like min-conten so no need to
+    //specidy them
+    grid-template-rows: 6rem calc(100vh - 6rem);
   }
 }
