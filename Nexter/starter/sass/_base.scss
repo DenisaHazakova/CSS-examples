@@ -17,6 +17,7 @@ $font-display: "Josefin Sans", sans-serif;
 // MEDIA QUERIES
 $bp-largest: 75em; // 1200px
 $bp-large: 62.5em; //1000px
+$bp-medium: 50em; // 800px
 
 *,
 *::before,
@@ -62,5 +63,15 @@ body {
       [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
       [center-end] minmax(6rem, 1fr) [full-end];
     grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+  }
+
+  @media screen and (max-width: $bp-medium) {
+    // need to add new row for realtors to be under header section (create third row)
+    // for the second row we want to have full 100vh to have whole width of entire row, we use calc function
+    // to substract vh and 6rem of the sidebar - first row
+    grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content 40vw repeat(
+        3,
+        min-content
+      );
   }
 }
